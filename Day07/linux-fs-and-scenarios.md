@@ -4,7 +4,7 @@
 ls -l /var/log
 You may see: syslog, auth.log
 
-I would use this when… troubleshooting system or service issues.
+## Can use this when… troubleshooting system or service issues.
 
 📁 /tmp
 Purpose: Temporary files stored during runtime; cleared periodically.
@@ -36,7 +36,7 @@ Purpose: Optional or third-party software installations.
 
 Examples: /opt/google/, /opt/docker/
 
-Use when… managing external applications.
+## Use when… managing external applications.
 
 ✅ Hands-On Tasks
 🔍 Find largest log files
@@ -92,7 +92,7 @@ htop
 
 Why: Interactive process viewer (if installed).
 
-🛠 Scenario 3: Finding Service Logs (docker)
+## 🛠 Scenario 3: Finding Service Logs (docker)
 Step 1
 systemctl status docker
 
