@@ -1,4 +1,4 @@
-Environment Basics
+## Environment Basics
 uname -a
 cat /etc/os-release
 
@@ -21,3 +21,6 @@ curl -I http://localhost
 🔹 Logs
 journalctl -u ssh -n 50
 tail -n 50 /var/log/syslog
+
+
+## Day 05: linux-troubleshooting-runbook.md
