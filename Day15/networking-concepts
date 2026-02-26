@@ -1,0 +1,142 @@
+
+## Task 1: DNS – How Names Become IPs
+🌐 What happens when you type google.com in a browser?
+
+The browser checks its cache and OS cache for the IP.
+
+If not found, it queries a DNS resolver (ISP or public DNS).
+
+The resolver contacts root → TLD → authoritative name servers.
+
+The IP address is returned, and the browser connects to that IP.
+
+DNS Record Types
+
+A — Maps a domain to an IPv4 address
+
+AAAA — Maps a domain to an IPv6 address
+
+CNAME — Alias pointing one domain to another domain
+
+MX — Specifies mail servers for email delivery
+
+NS — Identifies authoritative name servers for the domain
+
+Run:
+dig google.com
+
+Look for:
+
+A Record: IPv4 address (e.g., 142.250.x.x)
+
+TTL: Time DNS result is cached (e.g., 300 seconds)
+
+Example:
+
+google.com.    300    IN    A    142.250.192.14
+✅ Task 2: IP Addressing
+What is an IPv4 address?
+
+An IPv4 address is a 32-bit numeric identifier used to identify devices on a network.
+
+Example:
+
+192.168.1.10
+
+Structure:
+
+Four octets (0–255)
+
+Each octet = 8 bits
+
+Public vs Private IP
+Type	Description	Example
+Public	Routable on internet	8.8.8.8
+Private	Used inside networks	192.168.1.5
+Private IP Ranges
+
+10.0.0.0 – 10.255.255.255
+
+172.16.0.0 – 172.31.255.255
+
+192.168.0.0 – 192.168.255.255
+
+Run:
+ip addr show
+
+👉 Identify private IP (usually like 192.168.x.x or 10.x.x.x).
+
+✅ ## Task 3: CIDR & Subnetting
+What does /24 mean in 192.168.1.0/24?
+
+It means 24 bits are used for the network, leaving 8 bits for hosts.
+
+Usable Hosts
+CIDR	Total IPs	Usable Hosts
+/24	256	254
+/16	65,536	65,534
+/28	16	14
+Why do we subnet?
+
+Improves network organization
+
+Enhances security segmentation
+
+Reduces broadcast traffic
+
+Efficient IP allocation
+
+Fill in Table
+CIDR	Subnet Mask	Total IPs	Usable Hosts
+/24	255.255.255.0	256	254
+/16	255.255.0.0	65,536	65,534
+/28	255.255.255.240	16	14
+
+✅ Task 4: Ports – The Doors to Services
+What is a port?
+
+A port is a logical communication endpoint that allows multiple services to run on one machine.
+
+Common Ports
+Port	Service
+22	SSH
+80	HTTP
+443	HTTPS
+53	DNS
+3306	MySQL
+6379	Redis
+27017	MongoDB
+Run:
+ss -tulpn
+
+Example:
+
+LISTEN 0 128 0.0.0.0:22    sshd
+LISTEN 0 128 127.0.0.1:6379 redis
+
+✅ Task 5: Putting It Together
+curl http://myapp.com:8080
+ — what happens?
+
+DNS resolves myapp.com → IP
+
+TCP connects to port 8080
+
+HTTP request sent to web service
+
+Server responds with content
+
+Concepts involved:
+DNS → IP → TCP → Port → HTTP
+
+App can't reach database at 10.0.1.50:3306 — what to check?
+
+Is database service running?
+
+Network connectivity (ping / telnet)
+
+Firewall or security group rules
+
+Port accessibility
+
+DB bind address & credentials
